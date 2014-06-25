@@ -23,7 +23,7 @@ VERSION = re.compile(r".*__version__ = '(.*?)'", re.S).match(v.read()).group(1)
 v.close()
 
 setup(name = "SQLAlchemy",
-      version = VERSION,
+      version = VERSION + ".monetate1",
       description = "Database Abstraction Library",
       author = "Mike Bayer",
       author_email = "mike_mp@zzzcomputing.com",
