@@ -625,7 +625,9 @@ class QueuePool(Pool):
                 if not wait:
                     return self.do_get()
                 else:
-                    raise exc.TimeoutError("QueuePool limit of size %d overflow %d reached, connection timed out, timeout %d" % (self.size(), self.overflow(), self._timeout))
+                    host = getattr(self._creator, "host", "unknown host")
+                    raise exc.TimeoutError("QueuePool limit of size %d overflow %d reached, connection timed out, timeout %d, host %s" % (self.size(), self.overflow(), self._timeout, host))
+
 
             if self._overflow_lock is not None:
                 self._overflow_lock.acquire()
